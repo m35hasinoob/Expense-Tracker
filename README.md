@@ -1,28 +1,28 @@
 
-# 💰 Expense Tracker
+# Infinity Expense Tracker
 
 A modern Expense Tracker web application developed as part of a **Database Management System (DBMS)** course project. The application enables users to manage their daily income and expenses through a clean, responsive interface with secure authentication and efficient database integration.
 
-## 📌 Project Overview
+##  Project Overview
 
 Expense Tracker is designed to simplify personal finance management by allowing users to securely record, categorize, edit, and analyze their financial transactions. The system provides insightful expense tracking, budget management, and dashboard analytics while maintaining data consistency using database management principles.
 
-## ✨ Features
+##  Features
 
-- 🔐 Secure User Authentication
-- 📊 Dashboard Overview
-- 💸 Add Income & Expenses
-- ✏️ Update Existing Transactions
-- 🗑️ Delete Transactions
-- 📂 Category Management
-- 📈 Financial Summary
-- 🔎 Transaction History
-- 💾 Database Integration
-- 📱 Responsive User Interface
+-  Secure User Authentication
+-  Dashboard Overview
+-  Add Income & Expenses
+-  Update Existing Transactions
+-  Delete Transactions
+-  Category Management
+-  Financial Summary
+-  Transaction History
+-  Database Integration
+-  Responsive User Interface
 
 ---
 
-## 🛠 Tech Stack
+##  Tech Stack
 
 ### Frontend
 - HTML5
@@ -44,7 +44,7 @@ Expense Tracker is designed to simplify personal finance management by allowing 
 - Python
 - python-dotenv
 
-## 📸 Screenshots
+##  Screenshots
 
 <img width="3018" height="1408" alt="login" src="https://github.com/user-attachments/assets/ba96d802-1da5-4b36-90fb-ba1d30ef598a" />
 
@@ -54,7 +54,7 @@ Expense Tracker is designed to simplify personal finance management by allowing 
 
 ---
 
-## 📄 License
+##  License
 
 This project is licensed under the **MIT License**.
 
@@ -62,7 +62,7 @@ See the **LICENSE** file for more information.
 
 ---
 
-## 👨‍💻 Author
+##  Author
 
 **Muhaiminul Islam Hasin**
 
