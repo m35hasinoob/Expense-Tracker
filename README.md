@@ -1,3 +1,4 @@
+
 # 💰 Expense Tracker
 
 A modern Expense Tracker web application developed as part of a **Database Management System (DBMS)** course project. The application enables users to manage their daily income and expenses through a clean, responsive interface with secure authentication and efficient database integration.
@@ -45,11 +46,11 @@ Expense Tracker is designed to simplify personal finance management by allowing 
 
 ## 📸 Screenshots
 
-<img width="955" height="439" alt="Dashboard" src="https://github.com/user-attachments/assets/bde87c98-de71-45a2-a77d-e317b64c70d2" />
+<img width="3018" height="1408" alt="login" src="https://github.com/user-attachments/assets/ba96d802-1da5-4b36-90fb-ba1d30ef598a" />
 
-<img width="956" height="440" alt="Expense Management" src="https://github.com/user-attachments/assets/dafc7b6d-79af-4310-b4c4-df5555a1e273" />
+<img width="3058" height="1408" alt="Gemini_Generated_Image_vyrjfkvyrjfkvyrj" src="https://github.com/user-attachments/assets/e7f4b6d4-67c8-4185-bb4c-000b52a8de5c" />
 
-<img width="954" height="444" alt="Budget Overview" src="https://github.com/user-attachments/assets/67641192-23b6-4773-9bc0-8e2c319b990f" />
+<img width="3026" height="1408" alt="Gemini_Generated_Image_wjgp0swjgp0swjgp" src="https://github.com/user-attachments/assets/6794602d-95c2-4ffc-8a2a-be353476be8a" />
 
 ---
 
