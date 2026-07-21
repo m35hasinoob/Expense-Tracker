@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% include 'base.html' %}
+
+</head>
+
+<body>
+    {% include 'nav.html' %}
+    <container>
+        <h1 class="text-center mt-5 mt-md-6">Welcome to Infinity Expense Tracker</h1>
+    </container>
+    <div class="container my-5">
+        <h2 class="text-center">Expenses by Category</h2>
+        <canvas id="expenseChart"></canvas>
+
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const ctx = document.getElementById('expenseChart').getContext('2d');
+
+
+            const labels = {{ categories| tojson
+        }};
+
+
+        const data_values = {{ total_amounts | tojson }};
+
+        const colors = [
+            '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF', '#FF9F40', '#2ecc71', '#e67e22', '#e74c3c', '#1abc9c'
+        ];
+
+
+        const backgroundColors = labels.map((_, i) => colors[i % colors.length]);
+        const borderColors = backgroundColors;
+
+        const data = {
+            labels: labels,
+            datasets: [{
+                label: 'Total Expenses',
+                data: data_values,
+                backgroundColor: backgroundColors,
+                borderColor: borderColors,
+                borderWidth: 1
+            }]
+        };
+
+        const options = {
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    title: {
+                        display: true,
+                        text: 'Total Amount'
+                    }
+                },
+                x: {
+                    title: {
+                        display: true,
+                        text: 'Categories'
+                    }
+                }
+            },
+            plugins: {
+                legend: {
+                    display: true,
+                    labels: {
+                        generateLabels: function(chart) {
+                            const data = chart.data;
+                            if (data.labels.length && data.datasets.length) {
+                                return data.labels.map(function(label, i) {
+                                    return {
+                                        text: label,
+                                        fillStyle: backgroundColors[i],
+                                        strokeStyle: borderColors[i],
+                                        lineWidth: 1,
+                                        hidden: false,
+                                        index: i
+                                    };
+                                });
+                            }
+                            return [];
+                        }
+                    }
+                }
+            }
+        };
+
+
+        new Chart(ctx, {
+            type: 'bar',
+            data: data,
+            options: options
+        });
+        });
+    </script>
+    <div class="container my-5">
+        <h2 class="text-center">Expenses by Month</h2>
+        <canvas id="expenseMonthChart"></canvas>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const ctx = document.getElementById('expenseMonthChart').getContext('2d');
+
+            const months = {{ month | tojson
+        }};
+        const amounts = {{ amount_by_month | tojson }};
+
+        const data1 = {
+            labels: months,
+            datasets: [{
+                label: 'Total Expenses by Month',
+                data: amounts,
+                backgroundColor: [
+                    '#FFCE56', '#4BC0C0', '#9966FF', '#FF9F40', '#2ecc71', 
+                    '#e67e22', '#e74c3c', '#1abc9c', '#36A2EB'
+                ],
+                borderColor: [
+                    '#FFCE56', '#4BC0C0', '#9966FF', '#FF9F40', '#2ecc71', 
+                    '#e67e22', '#e74c3c', '#1abc9c', '#36A2EB'
+                ],
+                borderWidth: 1
+            }]
+        };
+
+        const monthChartOptions = {
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    title: {
+                        display: true,
+                        text: 'Total Amount'
+                    }
+                },
+                x: {
+                    title: {
+                        display: true,
+                        text: 'Months'
+                    }
+                }
+            },
+            plugins: {
+                legend: {
+                    display: true,
+                    labels: {
+                        generateLabels: function(chart) {
+                            const data = chart.data;
+                            if (data.labels.length && data.datasets.length) {
+                                return data.labels.map(function(label, i) {
+                                    return {
+                                        text: label,
+                                        fillStyle: data.datasets[0].backgroundColor[i],
+                                        strokeStyle: data.datasets[0].borderColor[i],
+                                        lineWidth: 1,
+                                        hidden: false,
+                                        index: i
+                                    };
+                                });
+                            }
+                            return [];
+                        }
+                    }
+                }
+            }
+        };
+
+        new Chart(ctx, {
+            type: 'bar',
+            data: data1,
+            options: monthChartOptions
+        });
+        });
+    </script>
+    <footer>
+        <p class="text-center">&copy; 2025 Infinity Expense Tracker</p>
+    </footer>
+
+</body>
+
+</html>

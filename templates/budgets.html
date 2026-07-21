@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% include 'base.html' %}
+    <title>Manage Budgets</title>
+</head>
+<body>
+    {% include 'nav.html' %}
+    <div class="container mt-5 pt-5">
+        <h1>Manage Budgets</h1>
+        
+        
+        <div class="card mb-4">
+            <div class="card-header">
+                <h5 class="card-title mb-0">Add New Budget</h5>
+            </div>
+            <div class="card-body">
+                <form method="post">
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="category" class="form-label">Category</label>
+                            <select class="form-select" id="category" name="category" required>
+                                {% for category in categories %}
+                                <option value="{{ category.id }}">{{ category.name }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="amount" class="form-label">Budget Amount</label>
+                            <input type="number" class="form-control" id="amount" name="amount" required step="0.01">
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="start_date" class="form-label">Start Date</label>
+                            <input type="date" class="form-control" id="start_date" name="start_date" required>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="end_date" class="form-label">End Date</label>
+                            <input type="date" class="form-control" id="end_date" name="end_date" required>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-success">Add Budget</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Budget List -->
+        <div class="card">
+            <div class="card-header">
+                <h5 class="card-title mb-0">Your Budgets</h5>
+            </div>
+            <div class="card-body">
+                {% if budgets %}
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Category</th>
+                                    <th>Budget Amount</th>
+                                    <th>Spent Amount</th>
+                                    <th>Remaining</th>
+                                    <th>Period</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for budget in budgets %}
+                                <tr>
+                                    <td>{{ budget.category_name }}</td>
+                                    <td>BDT{{ "%.2f"|format(budget.amount) }}</td>
+                                    <td>BDT{{ "%.2f"|format(budget.spent_amount) }}</td>
+                                    <td>BDT{{ "%.2f"|format(budget.amount - budget.spent_amount) }}</td>
+                                    <td>{{ budget.start_date.strftime('%Y-%m-%d') }} to {{ budget.end_date.strftime('%Y-%m-%d') }}</td>
+                                    <td>
+                                        <form method="post" action="{{ url_for('delete_budget_route', budget_id=budget.id) }}" style="display:inline;">
+                                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this budget?')">Delete</button>
+                                        </form>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                {% else %}
+                    <p class="text-center">No budgets found. Add one above!</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <footer>
+        <p class="text-center">&copy; 2025 Infinity Expense Tracker</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% include 'base.html' %}    
+</head>
+<body>
+    {% include 'nav.html' %}
+    <div class="container mt-5 pt-5">
+        <h1>View Expenses</h1>
+        
+        {% for expense in expenses %}
+        <div class="card mb-3">
+            <div class="card-body">
+                <h5 class="card-title">{{ expense.title }}</h5>
+                <p class="card-text">Amount: BDT{{ expense.amount }}</p>
+                <p class="card-text">Date: {{ expense.expense_date }}</p>
+                <p class="card-text">User: {{ users[expense.user_id] }}</p>
+                <a href="/edit_expense/{{ expense.id }}" class="btn btn-success">Edit</a>
+                <form method="post" action="/delete_expense/{{ expense.id }}" style="display:inline;">
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+            </div>
+        </div>
+        {% endfor %}
+
+        {% if not expenses %}
+        <div class="alert alert-info" role="alert">
+            No expenses found.
+        </div>
+        {% endif %}
+    </div>
+    <footer>
+        <p class="text-center">&copy; 2025 Infinity Expense Tracker</p>
+    </footer>
+</body>
+</html>

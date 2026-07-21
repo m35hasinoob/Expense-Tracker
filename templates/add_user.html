@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% include 'base.html' %}
+</head>
+<body>
+    {% include 'nav.html' %}
+    <container>
+        <h1 class="text-center mt-5 mt-md-6">Add User</h1>
+    </container>
+
+    <div class="container mt-4">
+        <form method="post" action="/add_user">
+            <div class="mb-3">
+                <label for="username" class="form-label  ">Username</label>
+                <input type="text" class="form-control" id="username" name="username" placeholder="Enter username">
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="email" name="email" placeholder="Enter email">
+            </div>
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary">Add User</button>
+            </div>
+        </form>
+    </div>
+
+    <footer>
+        <p class="text-center">&copy; 2025 Expense Tracker</p>
+    </footer>
+</body>
+
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% include 'base.html' %}
+</head>
+
+<body>
+    {% include 'nav.html' %}
+    <container>
+        <h1 class="text-center mt-5 mt-md-6">Edit Expense</h1>
+    </container>
+
+    <div class="container mt-4">
+        <form method="post" action="/edit_expense/{{ expense.id }}">
+            {% if message %}
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                {{ message }}
+            </div>
+            {% endif %}
+            <div class="mb-3">
+                <label for="expenseName" class="form-label">Expense Name</label>
+                <input type="text" class="form-control" id="expenseName" name="expenseName" value="{{ expense.title }}"
+                    required>
+            </div>
+            <div class="mb-3">
+                <label for="expenseAmount" class="form-label">Expense Amount</label>
+                <input type="number" class="form-control" id="expenseAmount" name="expenseAmount"
+                    value="{{ expense.amount }}" required>
+            </div>
+            <div class="mb-3">
+                <label for="expenseDate" class="form-label">Expense Date</label>
+                <input type="date" class="form-control" id="expenseDate" name="expenseDate"
+                    value="{{ expense.expense_date }}" required>
+            </div>
+            <div class="mb-3">
+                <label for="expenseCategory" class="form-label">Expense Category</label>
+                <select class="form-select" id="expenseCategory" name="expenseCategory" required>
+                    {% for category in cat %}
+                    <option value="{{ category.id }}" {% if category.id==expense.category_id %}selected{% endif %}>
+                        {{ category.name }}</option>
+                    {% endfor %}
+                </select>
+                <div class="text-center mt-3">
+                    <button type="submit" class="btn btn-success">Update Expense</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <footer>
+        <p class="text-center">&copy; 2025 Infinity Expense Tracker</p>
+    </footer>
+</body>
+
+</html>
